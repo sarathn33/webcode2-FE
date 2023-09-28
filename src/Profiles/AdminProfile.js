@@ -3,11 +3,12 @@ import { deleteMovie, getAdminById, } from '../Api-helper/api-helper'
 import { Box, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AdminProfile = () => {
-    
+    const navigate=useNavigate()
     const [admin,setAdmin]=useState()
     useEffect(()=>{
         getAdminById()
@@ -18,7 +19,7 @@ const AdminProfile = () => {
         deleteMovie(id)
         .then((res)=>console.log(res))
         .catch((error)=>console.log(error))
-    
+        navigate("/")
        }
   return (
     <div>

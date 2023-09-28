@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getMoviesDetails, newBooking } from '../../Api-helper/api-helper';
 import { Box, Button, FormLabel, TextField, Typography } from '@mui/material';
 
 
 const Booking = () => {
+    const navigate=useNavigate()
     const [movie,setMovie]=useState()
     const [inputs,setInputs]=useState({seatNumber:"",date:""})
     const id=useParams().id;
@@ -22,6 +23,7 @@ const Booking = () => {
             newBooking({...inputs,movie:movie._id})
             .then((res)=>console.log(res))
             .catch(err=>console.log(err))
+            navigate("/user")
     }
   return (
     <div>

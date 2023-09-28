@@ -3,11 +3,12 @@ import { deleteBooking, getUserBookings, getUserDetails } from '../Api-helper/ap
 import { Box, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const UserProfile = () => {
-    
+    const navigate=useNavigate()
     const [bookings,setBookings]=useState()
     const [user,setUser]=useState()
     useEffect(()=>{
@@ -23,7 +24,7 @@ console.log(user)
     deleteBooking(id)
     .then((res)=>console.log(res))
     .catch((error)=>console.log(error))
-
+    navigate("/")
    }
   return (
     <div>
